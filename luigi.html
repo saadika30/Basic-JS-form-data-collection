@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Order</title>
+    <style type="text/css">
+
+        html {
+            background-color: #0c0d0e;
+        }
+
+        body {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        #container {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            height: 100%;
+            background-color: #e3e3e3;
+            padding: 20px 0;
+        }
+
+        #container:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .left {
+            float: left;
+            width: 48%;
+        }
+
+        .right {
+            width: 48%;
+            float:left;
+        }
+
+        .box {
+            margin-bottom: 7px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            vertical-align: top;
+        }
+
+        label[for=checkbox] {
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            float: right;
+        }
+
+        input[type=text], textarea, select {
+            border-radius: 10px;
+            box-shadow: none;
+            border-style: none;
+        }
+
+        input[type=text], select {
+            height: 25px;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="left">
+        <h1>Luigi's Pizza Pasta</h1>
+
+        <h3>Please fill out the form below to order your pizza:</h3>
+
+        <div class="box">
+            <label>Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+        </div>
+
+        <div class="box">
+            <label>Contact Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your contact number">
+        </div>
+
+        <div class="box">
+            <label>Pizza:</label>
+            <select name="pizza" id="pizza">
+                <option value="Margherita">Margherita</option>
+                <option value="Regina">Regina</option>
+                <option value="Hawaian">Hawaian</option>
+                <option value="Chicken Mushroom">Margherita</option>
+            </select>
+        </div>
+
+        <div class="box inline">
+            <label>Size:</label>
+            <select name="size" id="">
+                <option value="Huge">HUGE</option>
+                <option value="Large">Large</option>
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+            </select>
+        </div>
+
+        <div class="box">
+            <input id="checked" type="checkbox"/> <label for="checkbox">2 litre Coke</label>
+        </div>
+
+        <div class="box">
+            <label>Address:</label>
+            <textarea name="address" id="" placeholder="Your address" rows="5" cols="20"></textarea>
+        </div>
+
+        <div class="box">
+            <input type="submit" value="Submit" onclick="displayOrder()"/>
+        </div>
+    </div>
+
+    <div class="right">
+        <div>
+            <h3>Your order:</h3>
+
+
+            <p id="nameResult"></p>
+
+            <p id="contactResult"></p>
+
+            <p id="pizzaResult"></p>
+
+            <p id="sizeResult"></p>
+
+            <p id="checkedResult"></p>
+
+            <p id="addressResult"></p>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function displayOrder() {
+        var pizzaResult = document.getElementById('pizza').value;
+        var contactResult = document.getElementById('phoneNumber').value;
+        var checkedResult = document.getElementById('checked').checked;
+        console.log(checkedResult);
+
+        document.getElementById('pizzaResult').innerHTML = 'Pizza choice: ' + pizzaResult;  
+        document.getElementById('contactResult').innerHTML = 'Contact Number: ' + contactResult;
+        document.getElementById('checkedResult').innerHTML = checkedResult;
+        if(checkedResult === true ) {
+            document.getElementById('checkedResult').innerHTML = 'Coke added to meal: Yes';
+        } else {
+            document.getElementById('checkedResult').innerHTML = 'Coke added to meal: No';
+        }
+    }
+</script>
+</body>
+</html>
